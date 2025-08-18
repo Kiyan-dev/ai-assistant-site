@@ -1,12 +1,12 @@
-async function sendMessage() {
-  const input = document.getElementById("userInput").value;
+async function askAI() {
+  const input = document.getElementById("userMessage").value;
 
-  const response = await fetch("https://your-backend-url.vercel.app/api/chat", {
+  const res = await fetch("/api/ask", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ message: input })
   });
 
-  const data = await response.json();
-  document.getElementById("chatOutput").innerText = data.reply;
+  const data = await res.json();
+  document.getElementById("aiReply").innerText = data.reply;
 }
